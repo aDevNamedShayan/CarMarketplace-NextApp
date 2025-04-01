@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 
-import { Search, ChevronDown, Heart, Bell, User, Menu } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import clsx from 'clsx';
-import Logo from '@/assets/Logo.png'
+import HeroSecImage from "@/assets/HeroSection.webp"
 
 interface AuctionCard {
   id: number;
@@ -50,9 +50,9 @@ const auctions: AuctionCard[] = [
   },
 ];
 
-function NavLink({ children, className }: { children: React.ReactNode; className?: string }) {
+export function NavLink({ children, className, href }: { children: React.ReactNode; className?: string, href?: string }) {
   return (
-    <Link href="#" className={clsx("text-gray-300 hover:text-white font-medium", className)}>
+    <Link href={href || '#'} className={clsx("text-gray-300 hover:text-white font-medium", className)}>
       {children}
     </Link>
   );
@@ -61,68 +61,22 @@ function NavLink({ children, className }: { children: React.ReactNode; className
 function App() {
   return (
     <div className="min-h-screen bg-secondary-light">
-      {/* Header */}
-      <header className="bg-secondary sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Link href="/" className='flex items-center w-32'>
-                <Image src={Logo} alt='Cars & Bids Logo' />
-              </Link>
-            </div>
-
-            {/* Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <NavLink>Auctions</NavLink>
-              <NavLink>Past Results</NavLink>
-              <NavLink className="flex items-center">
-                What&apos;s Cars & Bids? <ChevronDown className="ml-1 w-4 h-4" />
-              </NavLink>
-              <NavLink className="flex items-center">
-                Sell a Car <ChevronDown className="ml-1 w-4 h-4" />
-              </NavLink>
-            </nav>
-
-            {/* User Actions */}
-            <div className="flex items-center space-x-4">
-              <button className="p-2 hover:bg-secondary-light rounded-full">
-                <Search className="w-5 h-5 text-gray-300" />
-              </button>
-              <button className="p-2 hover:bg-secondary-light rounded-full">
-                <Heart className="w-5 h-5 text-gray-300" />
-              </button>
-              <button className="p-2 hover:bg-secondary-light rounded-full">
-                <Bell className="w-5 h-5 text-gray-300" />
-              </button>
-              <button className="p-2 hover:bg-secondary-light rounded-full">
-                <User className="w-5 h-5 text-gray-300" />
-              </button>
-              <button className="bg-primary hover:bg-primary-hover text-secondary px-4 py-2 rounded-md font-semibold">
-                Sign Up
-              </button>
-              <button className="md:hidden p-2 hover:bg-secondary-light rounded-full">
-                <Menu className="w-5 h-5 text-gray-300" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <div className="relative bg-secondary h-[500px] flex items-center justify-center">
-        <img 
-          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600&auto=format&fit=crop&q=60"
+        <Image
+          src={HeroSecImage}
           alt="Hero car"
           className="absolute inset-0 w-full h-full object-cover opacity-50"
+          fill
         />
         <div className="relative text-center text-white px-4">
           <h1 className="text-5xl font-bold mb-6">Find Your Dream Car</h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Discover unique and enthusiast vehicles through our curated online auctions.</p>
           <div className="flex justify-center gap-4">
-            <button className="bg-primary text-secondary px-8 py-3 rounded-md font-semibold hover:bg-primary-hover transition-colors">
+            <Link href='/auctions' className="bg-primary text-secondary px-8 py-3 rounded-md font-semibold hover:bg-primary-hover transition-colors">
               Browse Auctions
-            </button>
+            </Link>
             <button className="bg-white text-secondary px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
               Sell Your Car
             </button>
@@ -131,7 +85,7 @@ function App() {
       </div>
 
       {/* Main Content */}
-      <main className="px-4 py-12 bg-secondary">
+      <main className="px-10 py-6 bg-secondary">
         {/* Featured Section */}
         <section className="mb-16">
           <div className="flex justify-between items-center mb-8">
