@@ -2,6 +2,7 @@
 import { ChevronDown, Star, Clock } from 'lucide-react';
 import Image from 'next/image'; // Using next/image for optimization
 
+
 // Helper component for Auction Cards (makes the main component cleaner)
 const AuctionCard = ({
   imageUrl,
