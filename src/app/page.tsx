@@ -96,7 +96,7 @@ function App() {
             {auctions.map((auction) => (
               <div key={auction.id} className="bg-secondary-light rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="relative pb-[66%]">
-                  <img
+                  <Image
                     src={auction.image}
                     alt={auction.title}
                     className="absolute inset-0 w-full h-full object-cover"
@@ -144,7 +144,7 @@ function App() {
                 className="relative rounded-xl overflow-hidden group"
               >
                 <div className="relative pb-[100%]">
-                  <img
+                  <Image
                     src={category.image}
                     alt={category.name}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
